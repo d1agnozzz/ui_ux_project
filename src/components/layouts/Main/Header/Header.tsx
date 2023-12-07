@@ -1,26 +1,25 @@
-import Button from "@/components/common/Button/Button";
 import React from "react";
 import { VscSymbolColor } from "react-icons/vsc";
 import * as Style from "./index.styled";
+import Image from "next/image";
 
-type HeaderProps = {
-  switchTheme: () => void;
-};
+type HeaderProps = {};
 const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Style.Header id="header">
       <Style.Content>
         <Style.Logo>
-          <Style.Img src="https://yts.mx/assets/images/website/logo-YTS.svg"></Style.Img>
+          <Image
+            src="/logo_cropped.png"
+            alt=""
+            height={96}
+            width={96}
+            unoptimized={true}
+          />
           <Style.Name>HD movies at the smallest file size.</Style.Name>
         </Style.Logo>
 
-        <Style.Buttons>
-          <Button
-            name={<VscSymbolColor />}
-            action={() => props.switchTheme()}
-          />
-        </Style.Buttons>
+        <Style.Buttons></Style.Buttons>
       </Style.Content>
     </Style.Header>
   );

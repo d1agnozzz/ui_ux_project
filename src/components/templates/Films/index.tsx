@@ -1,8 +1,7 @@
 import { useFilmList } from "@/lib/hooks/useFilmList";
 import { useState } from "react";
-import Pagination from "../../common/Pagination/Pagination";
-import Film from "./Film/Film";
-import * as Style from "./index.styled";
+import Film from "./Film";
+import * as Styled from "./index.styled";
 
 const Films = () => {
   const [page, setPage] = useState(1);
@@ -17,18 +16,9 @@ const Films = () => {
     return;
   }
   return filmList ? (
-    <Style.Films>
-      <Style.Content>
-        <Style.Title>Films</Style.Title>
-        <Style.List>{filmsList}</Style.List>
-        <Pagination
-          totalUsersCount={filmList?.data?.movie_count}
-          currentPage={page}
-          pageSize={pageSize}
-          onPageChange={(page) => setPage(page)}
-        />
-      </Style.Content>
-    </Style.Films>
+    <Styled.Box>
+      <Styled.Grid>{filmsList}</Styled.Grid>{" "}
+    </Styled.Box>
   ) : null;
 };
 

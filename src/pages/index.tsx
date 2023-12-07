@@ -1,5 +1,5 @@
 import { MainLayout } from "@/components/layouts/Main";
-import Films from "@/components/templates/Films/index";
+import Films from "@/components/templates/Films";
 
 const App = () => {
   return (
