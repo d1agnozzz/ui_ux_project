@@ -16,9 +16,9 @@ const Films = () => {
     return;
   }
   return filmList ? (
-    <Styled.Box>
+    <Styled.Container>
       <Styled.Grid>{filmsList}</Styled.Grid>{" "}
-    </Styled.Box>
+    </Styled.Container>
   ) : null;
 };
 

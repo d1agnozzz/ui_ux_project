@@ -10,7 +10,10 @@ const Film = (movie_list: MovieList) => {
           alt={movie_list.title}
         ></Styled.CoverImage>
         <Styled.GradientOverlay />
-        <Styled.Title>{movie_list.title}</Styled.Title>
+        <Styled.TextBlock>
+          <Styled.Title>{movie_list.title}</Styled.Title>
+          <Styled.Year>{movie_list.year}</Styled.Year>
+        </Styled.TextBlock>
       </Styled.CardContainer>
     </div>
   );

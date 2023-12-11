@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box = styled.section`
+export const Container = styled.section`
   display: flex;
   flex: 0 0 auto;
   width: 100%;
