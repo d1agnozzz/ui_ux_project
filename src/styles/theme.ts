@@ -1,15 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
 export const darkTheme = {
-  backgroundColor: "#1F2023",
+  headerColor: "#262626",
+  backgroundColor: "#151515",
+  outlineColor: "#767676",
   textColor: "#F5F5F5",
   infoIconColor: "#2D2F34",
   iconColor: "#27292D",
-  accentColor1: `rgb(106,192,69)`,
+  accentColor1: `#FFCE80`,
   accentColor2: "#00c6ff",
   shadowColor: "rgba(0,0,0,0.2)",
 
-  textSizeTitle: "25px",
+  textSizeTitle: "32px",
   textSizeTitle900: "22px",
   textSizeTitle700: "22px",
   textSizeTitle500: "22px",
@@ -33,15 +35,18 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  backgroundColor: "white",
+  headerColor: "#E2E2E2",
+  outlineColor: "#A9A9A9",
+  backgroundColor: "#F5F5F5",
   textColor: "black",
+  textColorInverted: "white",
   infoIconColor: "#FAFAFA",
   iconColor: "white",
-  accentColor1: `rgb(106,192,69)`,
+  accentColor1: "#EF4B42",
   accentColor2: "#00c6ff",
   shadowColor: "rgba(0,0,0,0.2)",
 
-  textSizeTitle: "25px",
+  textSizeTitle: "32px",
   textSizeTitle900: "22px",
   textSizeTitle700: "22px",
   textSizeTitle500: "22px",
