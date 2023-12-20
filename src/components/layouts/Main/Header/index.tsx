@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { MdOutlineDarkMode } from "react-icons/md";
 import * as Style from "./index.styled";
 import Image from "next/image";
-import Button from "@/components/common/Button/Button";
+import Button from "@/components/common/Button";
 import SearchBar from "@/components/common/TextInput/TextInput";
 
 type HeaderProps = {

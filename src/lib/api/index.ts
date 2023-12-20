@@ -31,6 +31,8 @@ export type MovieList = {
     size: string;
     size_bytes: number;
     date_uploaded: string;
+    seeds: number;
+    peers: number;
   }[];
 };
 
@@ -39,7 +41,7 @@ export const filmListQuery = async (currentPage: string, pageSize: string) => {
     data: {
       movie_count: number;
       limit: number;
-      page_count: number;
+      page_number: number;
       movies: MovieList[];
     };
   }>(`list_movies.json?page=${currentPage}&limit=${pageSize}`);

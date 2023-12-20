@@ -5,11 +5,12 @@ export const darkTheme = {
   backgroundColor: "#151515",
   outlineColor: "#767676",
   textColor: "#F5F5F5",
+  textColorInverted: "#151515",
   infoIconColor: "#2D2F34",
   iconColor: "#27292D",
   accentColor1: `#FFCE80`,
-  accentColor2: "#00c6ff",
-  shadowColor: "rgba(0,0,0,0.2)",
+  accentColor2: "#EF4B42",
+  shadowColor: "#5a0600",
 
   textSizeTitle: "32px",
   textSizeTitle900: "22px",
@@ -43,8 +44,8 @@ export const lightTheme = {
   infoIconColor: "#FAFAFA",
   iconColor: "white",
   accentColor1: "#EF4B42",
-  accentColor2: "#00c6ff",
-  shadowColor: "rgba(0,0,0,0.2)",
+  accentColor2: "#FFCE80",
+  shadowColor: "#000000",
 
   textSizeTitle: "32px",
   textSizeTitle900: "22px",
@@ -82,4 +83,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: 0.1s;
     color: ${(props) => props.theme.textColor};
   }
+    small{
+font-size: 0.6em;
+}
 `;

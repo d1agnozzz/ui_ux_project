@@ -1,56 +1,86 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div`
-  display: grid;
-  position: relative;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-`;
-
 export const CoverImage = styled.img`
   grid-row: 1;
   grid-column: 1;
   aspect-ratio: 1/1/5;
-  display: flex;
+  /* display: flex; */
   flex: 0 0 auto;
   /* padding: 5px 5px; */
+  height: 100%;
   width: 100%;
-  object-fit: cover;
-  box-sizing: border-box;
-  /* border-radius: 15px; */
+  /* object-fit: cover; */
+  /* box-sizing: border-box; */
 `;
 
 export const TextBlock = styled.div`
   grid-row: 1;
+  overflow: hidden;
   grid-column: 1;
   display: flex;
-  align-self: flex-end;
+  justify-content: space-between;
+  align-content: space-between;
   flex-direction: column;
-  text-shadow: 1px 1px 3px #000000;
+  /* align-items: stretch; */
+  /* align-self: flex-end; */
+  text-shadow: -1px 1px 4px ${(props) => props.theme.shadowColor};
+  overflow: hidden;
   color: white;
   z-index: 1;
-  padding: 5px;
+  padding: 8px;
+  /* margin: 600px 0 0 0; */
+`;
+
+export const MainInfo = styled.div`
+  display: flex;
+`;
+
+export const HoverInfo = styled.div`
+  display: flex;
+  flex-grow: 1;
+  /* justify-content: flex-start; */
+  flex-direction: column;
+  font-size: clamp(1rem, 1.5vw, 2vh);
+  transform: translate(0%, -100%);
+  transition: all 1s;
+  /* align-items: stretch; */
+  /* clip-path: inset(0rem 0rem 100% 0rem); */
+  /* max-height: 0px; */
 `;
 
 export const Title = styled.h1`
-  // position: absolute;
-  /* margin: auto; */
-  font-size: clamp(1rem, 2vw, 8vh);
+  font-size: clamp(1.4rem, 2vw, 3vh);
   margin: 0;
-  /* -webkit-text-stroke: 0.6rem black; */
-  /* text-stroke: 0.6rem black; */
-  /* paint-order: stroke fill; */
-  /* bottom: 0; */
-  /* left: 0; */
   right: 0;
   width: 100%;
 `;
 
 export const Year = styled.h2`
-  font-size: clamp(0.3rem, 1vw, 4vh);
-  margin: 0;
-  align-self: flex-end;
+  font-size: clamp(1rem, 1vw, 3vh);
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+`;
+
+export const Genre = styled.h2`
+  text-align: center;
+  margin: 0 0 0 0;
+`;
+
+export const Score = styled.div`
+  background: ${(props) => props.theme.accentColor1};
+  /* width: clamp(50%, 15vw, 25vh); */
+  /* margin-top: auto; */
+  box-shadow: 0px 3px 10px #00000066;
+  text-shadow: 3px 3px 0px ${(props) => props.theme.shadowColor};
+  text-align: center;
+  font-size: clamp(3rem, 4vw, 4rem);
+  border-radius: clamp(12px, 2vw, 25px);
+  padding: clamp(5px, 1vw, 7vh);
+  margin-bottom: 5px;
+  align-self: center;
+  justify-self: flex-end;
+  font-weight: bold;
 `;
 
 export const GradientOverlay = styled.div`
@@ -59,6 +89,7 @@ export const GradientOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  transition: all 0.3s;
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0.7) 0%,
@@ -66,4 +97,38 @@ export const GradientOverlay = styled.div`
     rgba(0, 0, 0, 0) 100%
   );
   z-index: 0;
+`;
+export const SolidOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${(props) => props.theme.shadowColor};
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 0;
+`;
+export const CardContainer = styled.div`
+  display: grid;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* min-height: 100%; */
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 0.67/1;
+  transition: all 0.3s;
+  /* z-index: 10; */
+  &:hover {
+    box-shadow: 0px 0px 0px 4px ${(props) => props.theme.accentColor1};
+    & ${SolidOverlay} {
+      transition: all 0.3s;
+      opacity: 0.6;
+    }
+    & ${HoverInfo} {
+      transition: all 0.3s;
+      transform: translate(0%, 0%);
+    }
+  }
 `;
