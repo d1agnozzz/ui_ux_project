@@ -1,12 +1,12 @@
-import { MainLayout } from "@/components/layouts/Main";
-import Films from "@/components/templates/Films";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const App = () => {
-  return (
-    <MainLayout>
-      <Films />
-    </MainLayout>
-  );
+const Home = () => {
+  const { push } = useRouter();
+  useEffect(() => {
+    push("/catalog/1");
+  }, []);
+  return <p></p>;
 };
 
-export default App;
+export default Home;
