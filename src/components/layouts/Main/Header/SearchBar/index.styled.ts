@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const TextField = styled.input`
+export const SearchBar = styled.input`
   padding: 10px 10px 10px 25px;
   background-color: ${(props) => props.theme.backgroundColor};
-  font-size: 1.5em;
+  font-size: inherit;
+  /* font-size: clamp(1rem, 1.5rem, 4vw); */
   color: ${(props) => props.theme.textColor};
   border: none;
   box-shadow: 0 0 0 2px ${(props) => props.theme.outlineColor}; // fake border, so that it doesn't affect layout
