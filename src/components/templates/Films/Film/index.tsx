@@ -3,6 +3,10 @@ import * as Styled from "./index.styled";
 import Link from "next/link";
 
 const Film = (movie_list: MovieList) => {
+  const genres = movie_list?.genres?.slice(0, 3).map((genre) => {
+    return <Styled.Genre> {genre.toUpperCase()} </Styled.Genre>;
+  });
+
   return (
     <div>
       <Link href={`/films/${movie_list.id}`}>
@@ -19,27 +23,7 @@ const Film = (movie_list: MovieList) => {
                 {movie_list.rating}
                 <small>/10</small>
               </Styled.Score>
-              {0 in movie_list.genres ? (
-                <Styled.Genre>
-                  {movie_list.genres[0].toUpperCase()}
-                </Styled.Genre>
-              ) : (
-                ""
-              )}
-              {1 in movie_list.genres ? (
-                <Styled.Genre>
-                  {movie_list.genres[1].toUpperCase()}
-                </Styled.Genre>
-              ) : (
-                ""
-              )}
-              {2 in movie_list.genres ? (
-                <Styled.Genre>
-                  {movie_list.genres[2].toUpperCase()}
-                </Styled.Genre>
-              ) : (
-                ""
-              )}
+              {genres}
               <Styled.Year>{movie_list.year}</Styled.Year>
             </Styled.HoverInfo>
             <Styled.MainInfo>
