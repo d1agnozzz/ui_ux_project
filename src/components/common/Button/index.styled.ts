@@ -2,14 +2,17 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   display: flex;
-  flex: 0 0 auto;
+  /* flex: 0 0 auto; */
+  flex-grow: 1;
   width: 56px;
   height: 56px;
   border-radius: 50px;
   border: 2px solid ${(props) => props.theme.outlineColor};
+  aspect-ration: 1/1;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.iconColor};
+  padding: auto;
+  background-color: ${(props) => props.theme.backgroundColor};
   /* box-shadow: 0px 0px 5px ${(props) => props.theme.shadowColor} ; */
   color: ${(props) => props.theme.textColor};
   &:hover {
@@ -29,6 +32,9 @@ export const Button = styled.button`
 `;
 
 export const Content = styled.div`
+  height: 56px;
+  max-width: 56px;
+  padding: auto;
   display: flex;
   width: 100%;
   width: 100%;
@@ -38,10 +44,11 @@ export const Content = styled.div`
 
 export const Name = styled.div`
   display: flex;
-  width: 150%;
-  width: 150%;
+  /* width: 150%; */
+  /* width: 150%; */
   align-items: center;
   justify-content: center;
-  font-size: ${(props) => props.theme.textSizeTitle};
+  /* font-size: inherit; */
+  font-size: clamp(1rem, 1.5rem, 4vw);
   font-weight: 600;
 `;

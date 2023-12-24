@@ -8,12 +8,14 @@ export const Pagination = styled.div`
   justify-content: center;
   background-color: ${(props) => props.theme.bachgroundColor};
   transition: 0.1s;
+  /* gap: 10px; */
   margin: 20px 0px;
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 1rem;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -26,7 +28,7 @@ export const Item = styled.div`
   display: flex;
   flex-grow: 1;
   /* flex: 0 0 auto; */
-  justify-content: space-evenly;
+  justify-content: center;
   aspect-ration: 1/1;
   align-items: center;
   background-color: ${(props) => props.theme.iconColor};
@@ -44,10 +46,9 @@ export const Item = styled.div`
     /* color: white; */
     box-shadow: 0px 0px 0px 2px ${(props) => props.theme.accentColor1};
   }
-  margin: 0px 10px 0px 0px;
-  &:last-child {
-    margin: 0px 0px 0px 0px;
-  }
+  /* margin: 0px 10px 0px 0px; */
+  /* &:last-child { */
+  /*   margin: 0px 0px 0px 0px; */
 `;
 
 export const ActiveItem = styled(Item)`
