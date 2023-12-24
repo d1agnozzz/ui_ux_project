@@ -10,6 +10,9 @@ export const Container = styled.section`
 
   max-width: 100%;
   padding: 50px 100px;
+  @media (max-width: 768px) {
+    padding: 10px 10px;
+  }
   /* height: 100%; */
   /* justify-content: space-between; */
 `;
