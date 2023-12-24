@@ -25,10 +25,10 @@ export const Header = styled.header`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: space-between;
+  /* width: 100%; */
   height: 100%;
-  margin: 10px;
+  margin: 10px 20px;
   /* padding: 0px 20px; */
   background-color: ${(props) => props.theme.headerColor};
   box-sizing: border-box;
@@ -50,9 +50,11 @@ export const Content = styled.div`
   }
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.a`
+  cursos: pointer;
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 
 export const LogoBG = styled.div`
@@ -66,28 +68,35 @@ export const LogoBG = styled.div`
 
 export const Icon = styled.img`
   display: flex;
+  aspect-ration: 1/1;
   /* max-width: 96px; */
-  height: 96px;
-  width: auto;
+  max-height: 96px;
+  @media (max-width: 576px) {
+    max-height: 48px;
+    /* display: none; */
+  }
 `;
 export const LogoName = styled.span`
   display: flex;
   font-size: ${(props) => props.theme.textSizeTitle};
   font-weight: 500;
   font-family: "Russo One";
-  margin: 5px 0px 0px 24px;
+  /* margin: 5px 0px 0px 24px; */
   @media (max-width: 768px) and (min-width: 576px) {
     font-size: ${(props) => props.theme.textSizeTextM500};
   }
   @media (max-width: 576px) {
     font-size: ${(props) => props.theme.textSizeTextM500};
+    display: none;
   }
 `;
 
 export const SearchContainer = styled.div`
-  margin: 0 50px;
+  font-size: clamp(1rem, 1.5rem, 4vw);
+  /* margin: 0 50px; */
 `;
 
 export const Buttons = styled.div`
+  font-size: 5rem;
   display: flex;
 `;

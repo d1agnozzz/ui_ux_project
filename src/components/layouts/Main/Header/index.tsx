@@ -4,7 +4,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import * as Style from "./index.styled";
 import Image from "next/image";
 import Button from "@/components/common/Button";
-import SearchBar from "@/components/common/TextInput/TextInput";
+import SearchBar from "./SearchBar";
 
 type HeaderProps = {
   switchTheme: () => void;
@@ -13,14 +13,8 @@ export const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Style.Header id="header">
       <Style.Content>
-        <Style.Logo>
-          <Image
-            src="/logo_cropped.png"
-            alt=""
-            height={64}
-            width={64}
-            unoptimized={true}
-          />
+        <Style.Logo href="/">
+          <Style.Icon src="/logo_cropped.png" alt="" />
           <Style.LogoName>КиноСфера</Style.LogoName>
         </Style.Logo>
         <Style.SearchContainer>
