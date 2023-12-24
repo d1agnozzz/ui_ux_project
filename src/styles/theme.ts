@@ -11,6 +11,8 @@ export const darkTheme = {
   accentColor1: `#FFCE80`,
   accentColor2: "#EF4B42",
   shadowColor: "#5a0600",
+  peersColor: "#377529",
+  leechesColor: "#ad2424",
 
   textSizeTitle: "32px",
   textSizeTitle900: "22px",
@@ -46,6 +48,8 @@ export const lightTheme = {
   accentColor1: "#EF4B42",
   accentColor2: "#FFCE80",
   shadowColor: "#000000",
+  peersColor: "#cff9c7",
+  leechesColor: "#fee1a8",
 
   textSizeTitle: "32px",
   textSizeTitle900: "22px",
