@@ -6,6 +6,8 @@ import TorrentItem from "./TorrentItem";
 import * as Styled from "./index.styled";
 import { useEffect, useState } from "react";
 import CommentItem, { CommentProps } from "./CommentItem";
+import styled from "styled-components";
+import { MdAccessTime } from "react-icons/md";
 
 const AboutMovie = () => {
   const router = useRouter();
@@ -27,8 +29,6 @@ const AboutMovie = () => {
     }
   });
 
-  // console.log(comments[0]);
-
   useEffect(() => {
     window.localStorage.setItem(
       filmRetrieve?.data.movie.id as string,
@@ -41,7 +41,7 @@ const AboutMovie = () => {
   }
 
   const genresList = filmRetrieve?.data.movie.genres.map((value) => {
-    return <GenreItem id={value} text={value} />;
+    return <GenreItem id={value} genre_name={value} />;
   });
 
   const torrentList = filmRetrieve?.data.movie.torrents?.map((value, index) => {
@@ -70,9 +70,13 @@ const AboutMovie = () => {
         <Styled.TopInfoContainer>
           <Styled.MainInfoContainer>
             <Styled.Title> {filmRetrieve?.data.movie.title} </Styled.Title>
-            <Styled.Year>
+            <Styled.YearAndLanguage>
               {filmRetrieve?.data.movie.year} {language}
-            </Styled.Year>
+            </Styled.YearAndLanguage>
+            <Styled.Duration>
+              <MdAccessTime />
+              {filmRetrieve?.data.movie.runtime} минут
+            </Styled.Duration>
           </Styled.MainInfoContainer>
           <Styled.RatingContainer>
             <Styled.Rating>{filmRetrieve?.data.movie.rating}</Styled.Rating>
@@ -89,17 +93,22 @@ const AboutMovie = () => {
         </Styled.ShowMoreButton>
         <Styled.TorrentsCaption>Скачать</Styled.TorrentsCaption>
         <Styled.Torrents>{torrentList}</Styled.Torrents>
+        <Styled.CommentFormCaption>
+          Оставить комментарий
+        </Styled.CommentFormCaption>
         <Styled.CommentForm
           onSubmit={(event) => {
             event.preventDefault();
-            const newComment: CommentProps = {
-              id: comments.length + 1,
-              userName: userName,
-              commentText: commentText,
-            };
-            setComments([...comments, newComment]);
-            setUserName("");
-            setCommentText("");
+            if (userName.trim().length != 0 && commentText.trim().length != 0) {
+              const newComment: CommentProps = {
+                id: comments.length + 1,
+                userName: userName,
+                commentText: commentText,
+              };
+              setComments([...comments, newComment]);
+              setUserName("");
+              setCommentText("");
+            }
           }}
         >
           <Styled.CommentUserName
@@ -108,24 +117,46 @@ const AboutMovie = () => {
             onChange={(event) => setUserName(event.target.value)}
           />
           <Styled.CommentText
-            placeholder="Ваш отзыв"
+            placeholder="Ваш комментарий"
             value={commentText}
             onChange={(event) => setCommentText(event.target.value)}
           />
           <Styled.CommentSubmitButton type="submit">
-            Отправить отзыв
+            Отправить комментарий
           </Styled.CommentSubmitButton>
         </Styled.CommentForm>
-        {comments.map((comment) => {
-          return (
-            <CommentItem
-              key={comment.id}
-              id={comment.id}
-              userName={comment.userName}
-              commentText={comment.commentText}
-            />
-          );
-        })}
+
+        <Styled.CommentsCaption>
+          Отзывы других пользователей
+        </Styled.CommentsCaption>
+
+        <Styled.CommentsContainer>
+          {comments.length != 0 ? (
+            comments.map((comment) => {
+              return (
+                <CommentItem
+                  key={comment.id}
+                  id={comment.id}
+                  userName={comment.userName}
+                  commentText={comment.commentText}
+                  onDeleteClick={() => {
+                    const newComments = comments.filter(
+                      (comment_) => comment_.id != comment.id,
+                    );
+                    setComments(newComments);
+                  }}
+                />
+              );
+            })
+          ) : (
+            <Styled.NoCommentsContainer>
+              <Styled.NoCommentsIcon src="/sad_face.svg" />
+              <Styled.NoComentsCaption>
+                Комментариев пока нет
+              </Styled.NoComentsCaption>
+            </Styled.NoCommentsContainer>
+          )}
+        </Styled.CommentsContainer>
       </Styled.Info>
     </Styled.Container>
   );

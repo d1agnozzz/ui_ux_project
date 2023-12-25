@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Home = () => {
   const { push } = useRouter();
   useEffect(() => {
-    push("/catalog/1");
+    push("/catalog");
   }, []);
   return <p></p>;
 };

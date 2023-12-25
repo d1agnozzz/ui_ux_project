@@ -40,13 +40,14 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     .map((element) => {
       if (element === props.currentPage) {
         return (
-          <Style.ActiveItem key={`pagination${element}`}>
+          <Style.ActiveItem $visible={true} key={`pagination${element}`}>
             {element}
           </Style.ActiveItem>
         );
       } else {
         return (
           <Style.Item
+            $visible={true}
             key={`pagination${element}`}
             onClick={() => props.onPageChange(element, props.pageSize)}
           >
@@ -59,14 +60,18 @@ const Pagination: React.FC<PaginationProps> = (props) => {
   return (
     <Style.Pagination>
       <Style.Content>
-        {portionNumber > 1 && (
-          <Style.Item onClick={() => setPortionNumber(portionNumber - 1)}>
-            <VscArrowLeft />
-          </Style.Item>
-        )}
+        <Style.Item
+          $visible={portionNumber > 1}
+          onClick={() => setPortionNumber(portionNumber - 1)}
+        >
+          <VscArrowLeft />
+        </Style.Item>
         {pagesElements}
         {portionCount > portionNumber && (
-          <Style.Item onClick={() => setPortionNumber(portionNumber + 1)}>
+          <Style.Item
+            $visible={true}
+            onClick={() => setPortionNumber(portionNumber + 1)}
+          >
             <VscArrowRight />
           </Style.Item>
         )}

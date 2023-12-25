@@ -1,5 +1,6 @@
+import * as Styled from "./index.styled";
 const Loader = () => {
-  return <h1>Loading...</h1>;
+  return <Styled.Container>Loading...</Styled.Container>;
 };
 
 export default Loader;

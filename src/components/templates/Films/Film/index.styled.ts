@@ -60,6 +60,8 @@ export const Year = styled.h2`
   font-weight: bold;
   text-align: center;
   margin: 5px;
+  /* color: ${(props) => props.theme.accentColor2}; */
+  text-shadow: 0 0 1px ${(props) => props.theme.shadowColor};
 `;
 
 export const Genre = styled.h2`

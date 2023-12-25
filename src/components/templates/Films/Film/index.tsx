@@ -3,7 +3,7 @@ import * as Styled from "./index.styled";
 import Link from "next/link";
 
 const Film = (movie_list: MovieList) => {
-  const genres = movie_list?.genres?.slice(0, 3).map((genre) => {
+  const genres = movie_list?.genres?.slice(0, 2).map((genre) => {
     return <Styled.Genre> {genre.toUpperCase()} </Styled.Genre>;
   });
 

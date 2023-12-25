@@ -1,46 +1,97 @@
 import { useFilmList } from "@/lib/hooks/useFilmList";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Film from "./Film";
 import { useRouter } from "next/router";
 import * as Styled from "./index.styled";
 import Pagination from "@/components/common/Pagination";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { create } from "domain";
+import Loader from "@/components/common/Loader";
+import { MdClose } from "react-icons/md";
 
 const Films = () => {
-  const [page, setPage] = useState("1");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [page, setPage] = useState(searchParams.get("page"));
+  // console.log("page: " + page);
 
   useEffect(() => {
     if (router.isReady) {
       console.log(router.query);
-      setPage(router.query.current_page || "");
+      setPage(router.query.page || "");
     }
   }, [router.isReady]);
 
-  const pageSize = 24;
-  const { filmList, isLoading } = useFilmList(String(page), String(pageSize));
+  useEffect(() => {
+    setPage("1");
+  }, [searchParams.get("query")]);
 
-  const film = filmList?.data.movies.map((film) => {
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams],
+  );
+
+  // console.log("search: " + searchParams.get("query") ?? "");
+  // console.log("genre: " + searchParams.get("genre"));
+  const pageSize = 24;
+  const { filmList, isLoading } = useFilmList(
+    searchParams.get("query") ?? "",
+    searchParams.get("genre") ?? "",
+    String(page),
+    String(pageSize),
+  );
+
+  if (!isLoading && !filmList?.data.movies) {
+    return (
+      <Styled.NoMoviesFoundCaption>
+        Фильмы не найдены :[
+      </Styled.NoMoviesFoundCaption>
+    );
+  }
+
+  console.log("filmList: ");
+  console.log(filmList?.data);
+
+  const films = filmList?.data.movies?.map((film) => {
     return <Film key={film.id} {...film}></Film>;
   });
 
-  if (isLoading) {
-    return;
-  }
-  return filmList ? (
+  // if (isLoading) {
+  //   return;
+  // }
+  return (
     <Styled.Container>
-      <Styled.Grid>{film}</Styled.Grid>{" "}
+      {searchParams.get("genre") ? (
+        <Styled.GenreChip>
+          {searchParams.get("genre")}
+          <Styled.DeleteGenre
+            onClick={() => {
+              router.push("/catalog?" + createQueryString("genre", ""));
+            }}
+          >
+            <MdClose />
+          </Styled.DeleteGenre>
+        </Styled.GenreChip>
+      ) : (
+        ""
+      )}
+      {!isLoading ? <Styled.Grid>{films}</Styled.Grid> : <Loader />}
       <Pagination
         pageSize={pageSize}
         currentPage={filmList?.data.page_number}
         totalMovieCount={filmList?.data.movie_count}
         onPageChange={(page) => {
           setPage(page);
-          router.push(`/catalog/${page}`);
+          router.push("/catalog?" + createQueryString("page", page));
         }}
       />
     </Styled.Container>
-  ) : null;
+  );
 };
 
 export default Films;

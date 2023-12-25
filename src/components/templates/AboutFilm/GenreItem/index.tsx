@@ -1,11 +1,21 @@
+import { useRouter } from "next/router";
 import * as Styled from "./index.styled";
 
 type GenreItemProps = {
   id: any;
-  text: string;
+  genre_name: string;
 };
 const GenreItem: React.FC<GenreItemProps> = (props) => {
-  return <Styled.Chip>{props.text}</Styled.Chip>;
+  const router = useRouter();
+  return (
+    <Styled.Chip
+      onClick={() => {
+        router.push("/catalog?genre=" + props.genre_name);
+      }}
+    >
+      {props.genre_name}
+    </Styled.Chip>
+  );
 };
 
 export default GenreItem;

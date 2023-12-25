@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const Pagination = styled.div`
   display: flex;
   width: 100%;
-  min-height: 40px;
-  flex: 0 0 auto;
+  /* min-height: 40px; */
   justify-content: center;
   background-color: ${(props) => props.theme.bachgroundColor};
   transition: 0.1s;
@@ -15,7 +14,7 @@ export const Pagination = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 0.75rem;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -23,28 +22,31 @@ export const Content = styled.div`
   box-sizing: border-box;
 `;
 
-export const Item = styled.div`
+export const Item = styled.div<{ $visible: boolean }>`
   cursor: pointer;
   display: flex;
   flex-grow: 1;
-  /* flex: 0 0 auto; */
+  visibility: ${(props) => (props.$visible ? "visible" : "hidden")};
   justify-content: center;
   aspect-ration: 1/1;
   align-items: center;
   background-color: ${(props) => props.theme.iconColor};
   font-weight: 500;
   font-size: ${(props) => props.theme.textSizeTextL};
-  height: 50px;
-  max-width: 50px;
+  height: 40px;
+  max-width: 40px;
   border-radius: 50px;
-  padding: auto;
   box-shadow: 0px 0px 0px 2px ${(props) => props.theme.outlineColor};
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   transition: 0.1s;
   &:hover {
     transition: 0.1s;
     /* color: white; */
     box-shadow: 0px 0px 0px 2px ${(props) => props.theme.accentColor1};
+  }
+  @media (max-width: 700px) {
+    font-size: 1rem;
+    /* height: 40px; */
   }
   /* margin: 0px 10px 0px 0px; */
   /* &:last-child { */
