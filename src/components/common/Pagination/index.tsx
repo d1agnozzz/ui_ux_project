@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { VscArrowLeft, VscArrowRight } from "react-icons/vsc";
 
-import { useWindowSize } from "@/hooks/useWindowSize";
+// import { useWindowSize } from "@/hooks/useWindowSize";
+import { useWindowSize } from "@react-hook/window-size";
 import * as Style from "./index.styled";
 
 type PaginationProps = {
