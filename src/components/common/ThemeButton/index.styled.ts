@@ -49,6 +49,6 @@ export const Name = styled.div`
   align-items: center;
   justify-content: center;
   /* font-size: inherit; */
-  font-size: clamp(1rem, 1.5rem, 4vw);
+  font-size: clamp(1.5rem, 1.5rem, 4vw);
   font-weight: 600;
 `;

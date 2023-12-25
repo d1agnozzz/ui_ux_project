@@ -27,6 +27,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   /* width: 100%; */
+  gap: 10px;
   height: 100%;
   margin: 10px 20px;
   /* padding: 0px 20px; */
@@ -93,6 +94,7 @@ export const LogoName = styled.span`
 
 export const SearchContainer = styled.div`
   font-size: clamp(1rem, 1.5rem, 4vw);
+  line-height: 3rem;
   /* margin: 0 50px; */
 `;
 

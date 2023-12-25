@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SearchBar = styled.input`
-  padding: 10px 10px 10px 25px;
+  padding-left: 1rem;
   background-color: ${(props) => props.theme.backgroundColor};
   font-size: inherit;
   /* font-size: clamp(1rem, 1.5rem, 4vw); */
@@ -10,6 +10,7 @@ export const SearchBar = styled.input`
   box-shadow: 0 0 0 2px ${(props) => props.theme.outlineColor}; // fake border, so that it doesn't affect layout
   outline: none;
   border-radius: 500px;
+  line-height: inherit;
   transition: 0.1s;
   -webkit-transition: 0.1s;
   &:hover {
