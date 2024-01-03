@@ -2,6 +2,7 @@ import { useFilmList } from "@/lib/hooks/useFilmList";
 import { useCallback, useEffect, useState } from "react";
 import Film from "./Film";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import * as Styled from "./index.styled";
 import Pagination from "@/components/common/Pagination";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -94,4 +95,8 @@ const Films = () => {
   );
 };
 
-export default Films;
+export const DynamicFilms = dynamic(() => Promise.resolve(Films), {
+  ssr: false,
+});
+
+export default DynamicFilms;

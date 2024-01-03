@@ -34,4 +34,4 @@ export const Header: React.FC<HeaderProps> = (props) => {
 export const DynamicHeader = dynamic(() => Promise.resolve(Header), {
   ssr: false,
 });
-export default Header;
+export default DynamicHeader;
