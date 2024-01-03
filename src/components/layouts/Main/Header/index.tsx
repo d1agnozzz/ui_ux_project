@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { MdOutlineDarkMode } from "react-icons/md";
 import * as Style from "./index.styled";
 import Image from "next/image";
-import Button from "@/components/common/Button";
+import ThemeButton from "@/components/common/ThemeButton";
 import SearchBar from "./SearchBar";
 
 type HeaderProps = {
@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
         </Style.SearchContainer>
 
         <Style.Buttons>
-          <Button
+          <ThemeButton
             name={<MdOutlineDarkMode />}
             action={() => props.switchTheme()}
           />

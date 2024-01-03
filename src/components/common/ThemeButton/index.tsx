@@ -5,7 +5,7 @@ type ButtonProps = {
   name: string | JSX.Element;
   action: () => void;
 };
-const Button: React.FC<ButtonProps> = (props) => {
+const ThemeButton: React.FC<ButtonProps> = (props) => {
   return (
     <Style.Button onClick={() => props.action()}>
       <Style.Content>
@@ -14,4 +14,4 @@ const Button: React.FC<ButtonProps> = (props) => {
     </Style.Button>
   );
 };
-export default Button;
+export default ThemeButton;
